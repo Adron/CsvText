@@ -31,6 +31,23 @@ func TestToCsvText(t *testing.T) {
 			},
 			expected: "5,55,5,5,55\n6,6,66,23,24\n666,31,66,33,7",
 		},
+		{
+			input:    [][]int{},
+			expected: "",
+		},
+		{
+			input: [][]int{
+				{1},
+			},
+			expected: "1",
+		},
+		{
+			input: [][]int{
+				{1, 2, 3},
+				{4, 5, 6},
+			},
+			expected: "1,2,3\n4,5,6",
+		},
 	}
 
 	for _, tc := range testCases {

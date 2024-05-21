@@ -1,21 +1,20 @@
 package main
 
-import "strconv"
+import (
+	"strconv"
+	"strings"
+)
 
 func ToCsvText(array [][]int) string {
-	var result string
+	var rows []string
 
-	for i, row := range array {
-		for j, num := range row {
-			result += strconv.Itoa(num)
-			if j < len(row)-1 {
-				result += ","
-			}
+	for _, row := range array {
+		var rowStr []string
+		for _, num := range row {
+			rowStr = append(rowStr, strconv.Itoa(num))
 		}
-		if i < len(array)-1 {
-			result += "\n"
-		}
+		rows = append(rows, strings.Join(rowStr, ","))
 	}
 
-	return result
+	return strings.Join(rows, "\n")
 }
